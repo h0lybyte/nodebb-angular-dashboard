@@ -21,7 +21,7 @@ angular.module('app').factory('getSettings', ['$http', '$q', function($http, $q)
 
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$http', 'getSettings'
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$http', 'getSettings',
     function(  $scope,   $translate,   $localStorage,   $window, $http, getSettings) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
