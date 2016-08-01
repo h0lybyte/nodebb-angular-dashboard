@@ -3,19 +3,32 @@
 /* Controllers */
 
 angular.module('app').factory('getSettings', ['$http', '$q', function($http, $q) {
-  return {
-    //Code edited to create a function as when you require service it returns object by default so you can't return function directly. That's what understand...
-    getSetting: function (type) { 
-      var q = $q.defer();
-      $http.get('https://kbve.com/forum/api/me').success(function (data) {
-        q.resolve(function() {
-          var settings = jQuery.parseJSON(data);
-          return settings[type];
-        });
-      });
-      return q.promise;
-    }
-  }
+  
+  var personal_data_url = 'https://kbve.com/forum/api/me';
+  var p_data = $http.get(personal_data_url).then(function (resp) {
+    return JSON.parse(resp.data);
+  });
+
+  var factory = {};
+  factory.all = function () {
+    return p_data;
+  };
+  
+  
+  factory.get = function (id) {
+    return p_data.then(function(p_data){
+      
+        if (p_data.id) 
+          {
+            return p_data;
+          }
+      return null;
+    })
+  };
+  
+  
+  return factory;
+  
 }]);
 
 
@@ -63,7 +76,7 @@ angular.module('app')
         if($scope.app.updateUser)
         {
           $scope.app.updateUser = false;
-           getSettings.getSetting('email').then(function(data){
+           getSettings.all().then(function(data){
           $scope.app.user_data = data;
           console.log($scope.app.user_data);
         });
