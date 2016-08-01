@@ -14,6 +14,7 @@ angular.module('app')
       $scope.app = {
         name: 'KBVE',
         version: '2.2.0',
+        user_data: null,
 		  updateUser: 1,
         // for chart colors
         color: {

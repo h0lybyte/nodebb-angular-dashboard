@@ -40,24 +40,13 @@ app.controller('UserCtrl', ['$scope', function($scope) {
 app.controller('UserDataCtrl', ['$scope', 'user_data', '$stateParams', function($scope, user_data, $stateParams) {
   $scope.fold = $stateParams.fold;
   user_data.all().then(function(data){
-    $scope.user_data = data;
+    $scope.app.user_data = data;
+    console.log($scope.app.user_data);
   });
 }]);
 
 
 
-app.controller('MailNewCtrl', ['$scope', function($scope) {
-  $scope.mail = {
-    to: '',
-    subject: '',
-    content: ''
-  }
-  $scope.tolist = [
-    {name: 'James', email:'james@gmail.com'},
-    {name: 'Luoris Kiso', email:'luoris.kiso@hotmail.com'},
-    {name: 'Lucy Yokes', email:'lucy.yokes@gmail.com'}
-  ];
-}]);
 
 angular.module('app').directive('labelColor', function(){
   return function(scope, $el, attrs){
