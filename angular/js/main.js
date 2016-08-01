@@ -6,7 +6,7 @@ angular.module('app').factory('getSettings', ['$http', '$q', function($http, $q)
   
   var personal_data_url = 'https://kbve.com/forum/api/me';
   var p_data = $http.get(personal_data_url).then(function (resp) {
-    return JSON.parse(resp.data);
+    return resp.data;
   });
 
   var factory = {};
