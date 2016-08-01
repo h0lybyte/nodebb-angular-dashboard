@@ -30,7 +30,7 @@ angular.module('app')
                   abstract: true,
                   url: '/app',
                   templateUrl: layout, 
-                  resolve: load( ['js/app/user/user.js'])
+                  resolve: load( ['js/app/user/user-service.js'])
               })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',

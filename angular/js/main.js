@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$http', 
-    function(  $scope,   $translate,   $localStorage,   $window, $http) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$http', 'user_data'
+    function(  $scope,   $translate,   $localStorage,   $window, $http, user_data) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       if(isIE){ angular.element($window.document.body).addClass('ie');}
@@ -14,8 +14,8 @@ angular.module('app')
       $scope.app = {
         name: 'KBVE',
         version: '2.2.0',
-        user_data: null,
-		  updateUser: 1,
+        user_data: {},
+		  updateUser: true,
         // for chart colors
         color: {
           primary: '#7266ba',
@@ -39,6 +39,20 @@ angular.module('app')
           container: false
         }
       }
+      
+      
+       $scope.$watch('app.updateUser', function(){
+        if($scope.app.updateUser)
+        {
+          $scope.app.updateUser = false;
+           user_data.all().then(function(data){
+          $scope.app.user_data = data;
+          console.log($scope.app.user_data);
+        });
+        }
+      }, true);
+      
+      
 	   
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
