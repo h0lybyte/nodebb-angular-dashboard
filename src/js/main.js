@@ -38,10 +38,8 @@ angular.module('app')
           container: false
         }
       }
-	    if (angular.isDefined(user_data))
-	    {
-	      console.log(user_data.all())
-	    }
+	    console.log(app.user_data.all());
+	    
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
         $scope.app.settings = $localStorage.settings;
