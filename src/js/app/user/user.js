@@ -37,18 +37,14 @@ app.controller('UserCtrl', ['$scope', function($scope) {
 
 }]);
 
-app.controller('UserDataCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
+app.controller('UserDataCtrl', ['$scope', 'user_data', '$stateParams', function($scope, user_data, $stateParams) {
   $scope.fold = $stateParams.fold;
-  mails.all().then(function(data){
+  user_data.all().then(function(data){
     $scope.user_data = data;
   });
 }]);
 
-app.controller('MailDetailCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
-  mails.get($stateParams.mailId).then(function(mail){
-    $scope.mail = mail;
-  })
-}]);
+
 
 app.controller('MailNewCtrl', ['$scope', function($scope) {
   $scope.mail = {

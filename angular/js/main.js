@@ -36,8 +36,7 @@ angular.module('app')
           asideFolded: false,
           asideDock: false,
           container: false
-        },
-		user: {}
+        }
       }
 	  
       // save settings to local storage
@@ -47,19 +46,7 @@ angular.module('app')
         $localStorage.settings = $scope.app.settings;
       }
 	  
-	  $scope.$watch('app.updateUser', function(){
-		  if($scope.app.updateUser = 1)
-		  {
-			$scope.app.updateUser = 0;
-	  		$http({method: 'GET', url: 'https://kbve.com/forum/api/me'}).
-	         	 success(function(data, status, headers, config) {
-	              $scope.app.user = data;
-	        	  }).error(function(data, status, headers, config) {          
-	   	   		});
-				console.log($scope.app.user);
-		  }
-	  }, true);
-	  
+	
       $scope.$watch('app.settings', function(){
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
           // aside dock and fixed must set the header fixed.
