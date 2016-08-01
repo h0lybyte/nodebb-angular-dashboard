@@ -29,8 +29,7 @@ angular.module('app')
               .state('app', {
                   abstract: true,
                   url: '/app',
-                  templateUrl: layout, 
-                  resolve: load( ['js/app/user/user-service.js'])
+                  templateUrl: layout
               })
               .state('app.dashboard-v1', {
                   url: '/dashboard-v1',
