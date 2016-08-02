@@ -11,14 +11,16 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
             var req = {
               method: 'POST',
               
-              url: 'https://kbve.com/forum/login',
+              //Suh dude
+              
+              url: 'https://kbve.com/forum/api/ns/login',
               
               headers: {
                'Content-Type' : 'application/json'
                },
               
               data: { 
-                username: "h0lybyte", 
+                username: $scope.user.email, 
                 password: $scope.user.password
                 
               }
