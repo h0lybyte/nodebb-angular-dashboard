@@ -11,7 +11,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
             var req = {
               method: 'POST',
               
-              url: 'https://kbve.com/forum/api/ns/login',
+              url: 'https://kbve.com/forum/api/login',
               
               headers: {
                'Content-Type' : 'application/json'
