@@ -14,7 +14,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
               url: 'https://kbve.com/forum/api/login',
               
               headers: {
-               'Content-Type': 'application/json'
+               'Content-Type' : 'application/json'
                },
               
               data: { 
@@ -29,7 +29,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
             
       
       // Try to login
-      $http.post(req)
+      $http(req)
       .then(function(response) {
         console.log(response);
         if ( !response.data.user ) {
