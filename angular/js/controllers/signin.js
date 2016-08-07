@@ -23,11 +23,11 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
           method: 'POST',
           url: 'https://kbve.com/forum/api/ns/login',
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
             'X-CSRF-Token': csrf
           },
           data: {
-            username: $scope.user.email,
+            username: encodeURIComponent($scope.user.email),
             password: $scope.user.password
           }
         };
