@@ -17,7 +17,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
       
       $http(req)
       .then(function(res) {
-        var csrf = res.csrf_token;
+        var csrf = res.data.csrf_token;
         
         req = {
           method: 'POST',
@@ -34,8 +34,12 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
         
         $http(req)
         .then(function(res) {
-          console.log(res);
-        })
+          console.info(res);
+          
+          $state.go('app.dashboard-v1');
+        }, function(err) {
+          $scope.authError = err.data.message;
+        });
       });
     };
     
