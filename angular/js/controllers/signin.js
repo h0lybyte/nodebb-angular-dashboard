@@ -27,7 +27,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
             'X-CSRF-Token': csrf
           },
           data: {
-            username: encodeURIComponent($scope.user.email),
+            username: $scope.user.username,
             password: $scope.user.password
           }
         };
