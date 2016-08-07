@@ -3,45 +3,40 @@
 /* Controllers */
   // signin controller
 app.controller('SigninFormController', ['$scope', '$http', '$state', function($scope, $http, $state) {
+
     $scope.user = {};
     $scope.authError = null;
-    $scope.login = function() {
+    $scope.login = function login() {
       $scope.authError = null;
       
-            var req = {
-              method: 'POST',
-              
-              //Suh dude
-              
-              url: 'https://kbve.com/forum/api/v1/ns/login',
-              
-              headers: {
-               'Content-Type' : 'application/json'
-               },
-              
-              data: { 
-                username: $scope.user.email, 
-                password: $scope.user.password
-                
-              }
-              
-              
-            }
       
-            
+      var req = {
+        method: 'GET',
+        url: 'https://kbve.com/forum/api/config'
+      };
       
-      // Try to login
       $http(req)
-      .then(function(response) {
-        console.log(response);
-        if ( !response.data.user ) {
-          $scope.authError = 'Email or Password not right';
-        }else{
-          $state.go('app.dashboard-v1');
-        }
-      }, function(x) {
-        $scope.authError = 'Server Error';
+      .then(function(res) {
+        var csrf = res.csrf_token;
+        
+        req = {
+          method: 'POST',
+          url: 'https://kbve.com/forum/api/ns/login',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrf
+          },
+          data: {
+            username: $scope.user.email,
+            password: $scope.user.password
+          }
+        };
+        
+        $http(req)
+        .then(function(res) {
+          console.log(res);
+        })
       });
     };
-  }])
-;
+    
+}]);
