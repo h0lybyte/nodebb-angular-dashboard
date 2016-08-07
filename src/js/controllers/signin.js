@@ -13,7 +13,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
               
               //Suh dude
               
-              url: 'https://kbve.com/forum/api/ns/login',
+              url: 'https://kbve.com/forum/api/v1/ns/login',
               
               headers: {
                'Content-Type' : 'application/json'
