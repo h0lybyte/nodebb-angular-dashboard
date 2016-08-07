@@ -23,7 +23,7 @@ app.controller('SigninFormController', ['$scope', '$http', '$state', function($s
           method: 'POST',
           url: 'https://kbve.com/forum/api/ns/login',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             'X-CSRF-Token': csrf
           },
           data: {

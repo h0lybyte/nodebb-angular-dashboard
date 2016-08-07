@@ -5,6 +5,13 @@ app.factory('user_data', ['$http', function ($http) {
   var p_data = $http.get(personal_data_url).then(function (resp) {
     return resp.data;
   });
+  
+  // J
+  
+    var csrf = $http.get(personal_data_url).then(function (resp) {
+    return resp.data;
+  });
+  // J
 
   var factory = {};
   factory.all = function () {
